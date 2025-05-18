@@ -1,0 +1,9 @@
+import dotenv from 'dotenv';
+dotenv.config()
+
+const _config = {
+PORT : process.env.PORT,
+MONGO_URI : process.env.MONGO_URI,
+JWT_SCERET :process.env.JWT_SCERET
+}
+ export default  Object.freeze(_config)
