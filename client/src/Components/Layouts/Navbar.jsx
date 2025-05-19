@@ -36,7 +36,7 @@ const Navbar = () => {
               <div className="ml-10 flex items-baseline space-x-4">
                 <Link  to="/" className="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-600/20 transition-colors duration-200">Home</Link>  
                 <Link  to="#" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-600/20 transition-colors duration-200">Features</Link>  
-                <Link  to="#" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-600/20 transition-colors duration-200">Use Cases</Link>  
+                <Link  to="/profile" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-600/20 transition-colors duration-200">Profile</Link>  
                 <Link  to="#" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-600/20 transition-colors duration-200">Pricing</Link>  
                 <Link  to="#" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-600/20 transition-colors duration-200">Documentation</Link>  
               </div>

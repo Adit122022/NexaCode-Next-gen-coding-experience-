@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from '../Components/Pages/HomePage';
 import Login from '../Components/Auth/Login';
 import Navbar from '../Components/Layouts/Navbar';
+import Profile from '../Components/Pages/Profile';
 
 const AppRoutes = () => {
   // Array of routes that should not show the navbar
@@ -26,6 +27,7 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
         {/* Add more routes as needed */}
       </Routes>
     </BrowserRouter>
