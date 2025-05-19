@@ -45,6 +45,33 @@ try {
 }
  }
 
+
+ export const logout = async (req, res) => {
+  try {
+    const token = req.cookies?.token || req.headers?.authorization?.split(' ')[1];
+
+    if (!token) {
+      return res.status(400).json({ message: 'No token found to logout.' });
+    }
+
+    // Add token to blacklist (simulate invalidation)
+    await redisClient.set(token, 'logout', 'EX', 60 * 60 * 24); // 1 day
+ 
+    // Clear cookie
+    res.clearCookie('token', {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+    });
+
+    return res.status(200).json({ message: 'Logged out successfully!' });
+  } catch (error) {
+    console.error('Logout error:', error.message);
+    return res.status(500).json({ message: 'Something went wrong during logout.' });
+  }
+};
+
+
 //  get user 
 
 export const profile =(req,res)=>{

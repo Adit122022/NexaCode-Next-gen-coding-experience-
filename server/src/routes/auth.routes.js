@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import { profile, signin, signup } from '../controllers/user.controller.js';
+import { logout, profile, signin, signup } from '../controllers/user.controller.js';
 import {body} from 'express-validator'
 import { protect } from '../middlewares/user.middleware.js';
  const route = Router();
@@ -16,6 +16,7 @@ import { protect } from '../middlewares/user.middleware.js';
    body('password').isLength({min:6}).withMessage("Password must be 6 digits  😾")
    ,signin)
 
+  route.get('/logout' , protect, logout)
 // api/auth/profile  --> profile
 route.get('/profile' ,protect,profile) 
 
