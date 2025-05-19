@@ -1,6 +1,7 @@
 import {Router} from 'express'
-import { signin, signup } from '../controllers/user.controller.js';
+import { profile, signin, signup } from '../controllers/user.controller.js';
 import {body} from 'express-validator'
+import { protect } from '../middlewares/user.middleware.js';
  const route = Router();
 
 //  /api/auth/signup ----> register
@@ -14,5 +15,8 @@ import {body} from 'express-validator'
    body('email').isEmail().withMessage("Email sahi se DAAL 😾"),
    body('password').isLength({min:6}).withMessage("Password must be 6 digits  😾")
    ,signin)
+
+// api/auth/profile  --> profile
+route.get('/profile' ,protect,profile) 
 
   export default route;
