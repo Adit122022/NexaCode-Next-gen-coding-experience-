@@ -1,5 +1,5 @@
 import userModel from "../models/userSchema.js";
-import { createuser, findUser } from "../services/userService.js";
+import { createuser, findUser } from "../services/user.service.js";
  import {validationResult} from 'express-validator'
 import { setTokenCookie } from "../utils/setTokenCookie.js";
 
