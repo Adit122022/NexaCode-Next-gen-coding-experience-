@@ -13,35 +13,12 @@ import {
   X
 } from 'lucide-react';
 import Footer from '../Layouts/Footer';
-import Navbar from '../Layouts/Navbar';
+import { Link } from 'react-router-dom';
+import CodeAnimation from '../Layouts/CodeAnimation';
 
 
 
-// Code Animation Component
-const CodeAnimation = () => {
-  return (
-    <div className="bg-gray-900 rounded-lg p-4 shadow-lg border border-gray-700 font-mono text-sm text-gray-300 relative overflow-hidden">
-      <div className="flex items-center mb-4">
-        <div className="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
-        <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
-        <div className="w-3 h-3 rounded-full bg-green-500"></div>
-      </div>
-      <div className="animate-pulse">
-        <div className="text-blue-400">{"function automateTask() {"}</div>
-        <div className="ml-4">{"const devinAI = new DevinAgent();"}</div>
-        <div className="ml-4 text-gray-400">{"// Initialize the AI agent"}</div>
-        <div className="ml-4 text-purple-400">{"await devinAI.loadContext(repository);"}</div>
-        <div className="ml-4 text-green-400">{"const solution = await devinAI.solveTask({"}</div>
-        <div className="ml-8 text-yellow-400">{"description: 'Fix authentication bug',"}</div>
-        <div className="ml-8 text-yellow-400">{"priority: 'high',"}</div>
-        <div className="ml-8 text-yellow-400">{"testCases: testSuite"}</div>
-        <div className="ml-4 text-green-400">{"});"}</div>
-        <div className="ml-4">{"return solution;"}</div>
-        <div>{"}"}</div>
-      </div>
-    </div>
-  );
-};
+
 
 // Feature Card Component
 const FeatureCard = ({ icon: Icon, title, description }) => {
@@ -83,8 +60,8 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white">
-      <Navbar />
+    <div className="min-h-screen min-w-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white">
+     
       
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -100,16 +77,17 @@ const HomePage = () => {
               Devin understands your requirements, writes code, tests solutions, and collaborates with your team to ship software faster than ever before.
             </p>
             <div className="flex flex-wrap gap-4">
-              <a href="#" className="px-6 py-3 bg-blue-600 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center">
+              <Link href="#" className="px-6 py-3 bg-blue-600 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center">
                 Get Started <ArrowRight className="ml-2 h-4 w-4" />
-              </a>
-              <a href="#" className="px-6 py-3 bg-gray-800 rounded-lg font-medium border border-gray-700 hover:bg-gray-700 transition-colors flex items-center">
+              </Link>
+              <Link href="#" className="px-6 py-3 bg-gray-800 rounded-lg font-medium border border-gray-700 hover:bg-gray-700 transition-colors flex items-center">
                 Watch Demo <ChevronRight className="ml-2 h-4 w-4" />
-              </a>
+              </Link>
             </div>
           </div>
-          <div className="relative">
-            <div className="animate-float">
+
+          <div className="relative ">
+            <div className="animate-float ">
               <CodeAnimation />
             </div>
             <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-600/20 rounded-full blur-3xl"></div>
@@ -237,12 +215,12 @@ const HomePage = () => {
             Join thousands of developers who are shipping better code, faster with Devin AI.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <a href="#" className="px-8 py-3 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+            <Link href="#" className="px-8 py-3 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-100 transition-colors">
               Start Free Trial
-            </a>
-            <a href="#" className="px-8 py-3 bg-transparent border border-white rounded-lg font-medium hover:bg-white/10 transition-colors">
+            </Link>
+            <Link href="#" className="px-8 py-3 bg-transparent border border-white rounded-lg font-medium hover:bg-white/10 transition-colors">
               Schedule Demo
-            </a>
+            </Link>
           </div>
         </div>
       </section>

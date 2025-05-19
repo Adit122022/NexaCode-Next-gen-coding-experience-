@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Terminal, EyeOff, Eye, ArrowRight, Github, Twitter } from 'lucide-react';
+import { Terminal, EyeOff, Eye, ArrowRight, Github, Twitter, RectangleGogglesIcon, Projector } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import Navbar from '../Layouts/Navbar';
+import Footer from '../Layouts/Footer';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -27,16 +30,8 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 flex flex-col">
-      {/* Header / Logo */}
-      <header className="w-full py-6 px-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <a href="/" className="flex items-center">
-            <Terminal className="h-8 w-8 text-blue-500" />
-            <span className="ml-2 text-xl font-bold text-white">Devin AI</span>
-          </a>
-        </div>
-      </header>
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 flex flex-col pt-12">
+ 
 
       {/* Main Content */}
       <main className="flex-grow flex items-center justify-center px-4 py-12">
@@ -76,12 +71,13 @@ const Login = () => {
                 {/* Password Field */}
                 <div>
                   <div className="flex items-center justify-between mb-1">
-                    <label htmlFor="password" className="block text-sm font-medium text-gray-300">
+                    <label htmlFor="password" className="block text-sm font-medium  text-gray-300">
+                       
                       Password
                     </label>
-                    <a href="#" className="text-sm text-blue-400 hover:text-blue-300 transition-colors">
+                    <Link to="#" className="text-sm text-blue-400 hover:text-blue-300 transition-colors">
                       Forgot password?
-                    </a>
+                    </Link>
                   </div>
                   <div className="relative">
                     <input
@@ -156,7 +152,7 @@ const Login = () => {
               </div>
 
               {/* Social Login */}
-              <div className="mt-6 grid grid-cols-2 gap-3">
+              <div className="mt-6 grid grid-cols-2 gap-3" onClick={()=>(alert("services not available"))}>
                 <button
                   type="button"
                   className="w-full inline-flex justify-center py-3 px-4 border border-gray-600 rounded-lg shadow-sm bg-gray-700 text-sm font-medium text-gray-300 hover:bg-gray-600 transition-colors"
@@ -168,8 +164,8 @@ const Login = () => {
                   type="button"
                   className="w-full inline-flex justify-center py-3 px-4 border border-gray-600 rounded-lg shadow-sm bg-gray-700 text-sm font-medium text-gray-300 hover:bg-gray-600 transition-colors"
                 >
-                  <Twitter className="h-5 w-5" />
-                  <span className="ml-2">Twitter</span>
+                  <RectangleGogglesIcon className="h-5 w-5" />
+                  <span className="ml-2">Google</span>
                 </button>
               </div>
             </div>
@@ -179,9 +175,9 @@ const Login = () => {
           <div className="text-center">
             <p className="text-sm text-gray-400">
               Don't have an account?{' '}
-              <a href="/signup" className="font-medium text-blue-400 hover:text-blue-300 transition-colors">
+              <Link to="/signup" className="font-medium text-blue-400 hover:text-blue-300 transition-colors">
                 Sign up for free
-              </a>
+              </Link>
             </p>
           </div>
 
@@ -189,22 +185,16 @@ const Login = () => {
           <div className="text-center pt-4">
             <p className="text-xs text-gray-500">
               By signing in, you agree to our{' '}
-              <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors">Terms of Service</a>
+              <Link to="#" className="text-blue-400 hover:text-blue-300 transition-colors">Terms of Service</Link>
               {' '}and{' '}
-              <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors">Privacy Policy</a>
+              <Link to="#" className="text-blue-400 hover:text-blue-300 transition-colors">Privacy Policy</Link>
             </p>
           </div>
         </div>
       </main>
 
       {/* Footer */}
-      <footer className="py-6 px-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-sm text-gray-500">
-            © {new Date().getFullYear()} Devin AI. All rights reserved.
-          </p>
-        </div>
-      </footer>
+     <Footer/>
 
       {/* Background Elements */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-blue-600/5 rounded-full blur-3xl"></div>

@@ -4,7 +4,10 @@ import AppRoutes from './Routes/AppRoutes'
 const App = () => {
   return (
     <>
-    <AppRoutes/></>
+   <div className='overflow-x-hidden'>
+     <AppRoutes/>
+   </div>
+    </>
   )
 }
 
