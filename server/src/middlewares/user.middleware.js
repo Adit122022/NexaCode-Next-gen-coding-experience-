@@ -6,7 +6,7 @@ export const protect = (req,res,next)=>{
     try {
     const token = req.headers.authorization?.split(" ")[1] ||req.cookies?.token;
      if(!token) return res.status(400).json({error:'ABE TU HAI KON 😾😾 ( UNAUTHORIZED USER )'})
- console.log("token middleware--->" , token)
+//  console.log("token middleware--->" , token)   --> FOR DEBUGGING
  const decode = jwt.verify(token, config.JWT_SCERET)
  req.user = decode;
  next()

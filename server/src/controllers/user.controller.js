@@ -1,7 +1,10 @@
 import userModel from "../models/userSchema.js";
+import redisClient from "../services/redis.service.js";
+import { setTokenCookie } from "../services/setCookies.service.js";
 import { createuser, findUser } from "../services/user.service.js";
  import {validationResult} from 'express-validator'
-import { setTokenCookie } from "../utils/setTokenCookie.js";
+
+
 
 //  register user
  export const signup = async(req,res) =>{
