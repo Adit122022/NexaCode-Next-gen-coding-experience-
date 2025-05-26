@@ -1,49 +1,32 @@
 import userModel from "../models/userSchema.js";
 import redisClient from "../services/redis.service.js";
 import { setTokenCookie } from "../services/setCookies.service.js";
-import { createuser, findUser } from "../services/user.service.js";
  import {validationResult} from 'express-validator'
+  import {authUser} from '../services/user.service.js'
 
 
+//  if user present then --> login
+//  if user not present then --> register
+export const authenticateUser = async (req, res) => {
+  const error = validationResult(req);
+  if (!error.isEmpty()) {
+    return res.status(400).json({ error: error.array() });
+  }
 
-//  register user
- export const signup = async(req,res) =>{
-     const error = validationResult(req)
-      if(!error.isEmpty()) {
-        return res.status(400).json({error :error.array()});
-      }
-try {
-     const user = await createuser(req.body);  // create user is a service
-      const token =  user.generateJWT()
-       const userObj = user.toObject();
+  try {
+    const {user , message} = await authUser(req.body); // ✅ Service call
+    const token = user.generateJWT();
+
+    const userObj = user.toObject();
     delete userObj.password;
-       setTokenCookie(res, token);
-     res.status(200).json({user:userObj,token});
-} catch (error) {
-     console.log( "sign up -->" ,error.message)
-    res.status(400).send(error.message);
-    
-}
- }
-//   login user
- export const signin = async(req,res) =>{
-     const error = validationResult(req)
-      if(!error.isEmpty()) {
-        return res.status(400).json({error :error.array()});
-      }
-try {
-     const user = await findUser(req.body);  // finduser is a service
-     if(!user) return res.status(401).json({error :'Invalid credentials'})
-      const token =  user.generateJWT()
-       const userObj = user.toObject();  // convert to plain object
-    delete userObj.password;  
-      setTokenCookie(res, token);
-     res.status(200).json({user :userObj,token});
-} catch (error) {
-     console.log("sign in -->",error.message)
-    res.status(400).send(error.message);   
-}
- }
+
+    setTokenCookie(res, token);
+    res.status(200).json({ user: userObj, token , message });
+  } catch (error) {
+    console.error("auth -->", error.message);
+    res.status(400).json({ error: error.message });
+  }
+};
 
 
  export const logout = async (req, res) => {

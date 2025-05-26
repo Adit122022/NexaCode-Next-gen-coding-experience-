@@ -1,16 +1,21 @@
 import userModel from "../models/userSchema.js";
 
- export const createuser =async({email,password})=>{
-if(!email ||!password)  throw new Error('Email and password are required !');
-const hashpassword = await userModel.hashPassword(password)
-const user = await userModel.create({ email, password :hashpassword})
- return user;
- }
- export const findUser =async({email,password})=>{
-if(!email ||!password)  throw new Error('Email and password are required !');
-const user = await userModel.findOne({ email}).select('+password')
-const isMatch = await user.isValidPassword(password);
- if(!isMatch) return res.status(401).json({error :'Invalid credentials'})
+export const authUser = async ({ email, password }) => {
+  if (!email || !password) throw new Error("Email and password are required!");
 
- return user;
- }
+  let user = await userModel.findOne({ email }).select("+password");
+  let message;
+
+  if (user) {
+    const isMatch = await user.isValidPassword(password);
+    if (!isMatch) throw new Error("Invalid credentials");
+    message = "Login successful";
+  } else {
+    const hashedPassword = await userModel.hashPassword(password);
+    user = await userModel.create({ email, password: hashedPassword });
+    message = "User registered";
+  }
+
+  // Return both user and message (without modifying user document)
+  return { user, message };
+};

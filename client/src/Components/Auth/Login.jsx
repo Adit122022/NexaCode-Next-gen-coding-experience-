@@ -1,56 +1,62 @@
 import React, { useState, useEffect } from 'react';
-import { Terminal, EyeOff, Eye, ArrowRight, Github, Twitter, RectangleGogglesIcon, Projector } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import Navbar from '../Layouts/Navbar';
+import { EyeOff, Eye, ArrowRight, Github, RectangleGogglesIcon } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 import Footer from '../Layouts/Footer';
 
+import { toast } from 'react-toastify';
+
 const Login = () => {
+  const navigate = useNavigate();
+
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+ const [isLoading, setIsLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [formData, setformData] = useState(null)
 
   // Animation effect when component mounts
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
-  const handleSubmit = (e) => {
+  
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
+    setformData({email, password})
     
-    // Simulate API call
-    setTimeout(() => {
+      navigate("/")
+    setIsLoading(true);
+
+    try {
+
+      // handled in useEffect
+      toast.success( 'Login successfull');
+    } catch (err) {
+      toast.error(err.message || "Login failed");
+    } finally {
       setIsLoading(false);
-      // Handle login logic here
-      console.log('Login submitted:', { email, password, rememberMe });
-    }, 1500);
+    }
   };
+   console.log(formData)
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 flex flex-col pt-12">
- 
-
       {/* Main Content */}
       <main className="flex-grow flex items-center justify-center px-4 py-12">
         <div className={`max-w-md w-full space-y-8 transition-all duration-700 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
           {/* Login Form Card */}
           <div className="bg-gray-800 border border-gray-700 rounded-xl shadow-2xl overflow-hidden">
-            {/* Top Accent Bar */}
             <div className="h-2 bg-gradient-to-r from-blue-500 to-purple-600"></div>
-            
             <div className="p-8">
-              {/* Login Header */}
               <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold text-white mb-2">Welcome Back</h2>
                 <p className="text-gray-400">Sign in to continue to Devin AI</p>
               </div>
 
-              {/* Login Form */}
               <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Email Field */}
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
                     Email Address
@@ -68,11 +74,9 @@ const Login = () => {
                   />
                 </div>
 
-                {/* Password Field */}
                 <div>
                   <div className="flex items-center justify-between mb-1">
                     <label htmlFor="password" className="block text-sm font-medium  text-gray-300">
-                       
                       Password
                     </label>
                     <Link to="#" className="text-sm text-blue-400 hover:text-blue-300 transition-colors">
@@ -101,22 +105,8 @@ const Login = () => {
                   </div>
                 </div>
 
-                {/* Remember Me Checkbox */}
-                <div className="flex items-center">
-                  <input
-                    id="remember-me"
-                    name="remember-me"
-                    type="checkbox"
-                    checked={rememberMe}
-                    onChange={(e) => setRememberMe(e.target.checked)}
-                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-500 rounded bg-gray-700"
-                  />
-                  <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-300">
-                    Remember me for 30 days
-                  </label>
-                </div>
+              
 
-                {/* Submit Button */}
                 <div>
                   <button
                     type="submit"
@@ -141,7 +131,6 @@ const Login = () => {
                 </div>
               </form>
 
-              {/* Divider */}
               <div className="mt-6 relative">
                 <div className="absolute inset-0 flex items-center">
                   <div className="w-full border-t border-gray-600"></div>
@@ -151,8 +140,7 @@ const Login = () => {
                 </div>
               </div>
 
-              {/* Social Login */}
-              <div className="mt-6 grid grid-cols-2 gap-3" onClick={()=>(alert("services not available"))}>
+              <div className="mt-6 grid grid-cols-2 gap-3" onClick={() => alert("Services not available")}>
                 <button
                   type="button"
                   className="w-full inline-flex justify-center py-3 px-4 border border-gray-600 rounded-lg shadow-sm bg-gray-700 text-sm font-medium text-gray-300 hover:bg-gray-600 transition-colors"
@@ -171,7 +159,6 @@ const Login = () => {
             </div>
           </div>
 
-          {/* Sign Up Link */}
           <div className="text-center">
             <p className="text-sm text-gray-400">
               Don't have an account?{' '}
@@ -181,7 +168,6 @@ const Login = () => {
             </p>
           </div>
 
-          {/* Privacy Info */}
           <div className="text-center pt-4">
             <p className="text-xs text-gray-500">
               By signing in, you agree to our{' '}
@@ -193,10 +179,8 @@ const Login = () => {
         </div>
       </main>
 
-      {/* Footer */}
-     <Footer/>
+      <Footer />
 
-      {/* Background Elements */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-blue-600/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-purple-600/5 rounded-full blur-3xl"></div>
     </div>
