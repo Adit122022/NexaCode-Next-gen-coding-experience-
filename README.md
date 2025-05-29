@@ -161,4 +161,3 @@ npm run build  # Generates `dist/` folder
 
 ---
 
-This README now fully reflects your project’s capabilities, including **WebContainer API** usage. Let me know if you need adjustments! 🚀
