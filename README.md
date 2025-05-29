@@ -1,6 +1,6 @@
 
 
-# **Devin AI Agent**  
+# **NexaCode (Next-gen coding experience)**  
 **A Full-Stack AI Development Environment**  
 *Next-gen AI agent with in-browser code execution, real-time collaboration, and Gemini AI integration*  
 
