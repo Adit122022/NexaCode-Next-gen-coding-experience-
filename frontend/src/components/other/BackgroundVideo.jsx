@@ -9,7 +9,7 @@ const BackgroundVideo = () => {
         muted 
         className="min-w-full min-h-full object-cover"
       >
-        <source src="/background-video.mp4" type="video/mp4" />
+        <source src="/background.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
