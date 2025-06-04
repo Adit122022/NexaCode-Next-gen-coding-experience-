@@ -35,6 +35,7 @@ const Home = () => {
   };
 
   return (
+  
     <motion.div
       initial="hidden"
       animate="visible"
@@ -47,7 +48,7 @@ const Home = () => {
         <HeroSection />
         
         {/* Features Section */}
-        <section className="py-20 px-4 md:px-8 lg:px-16 bg-gray-900/50 backdrop-blur-sm">
+        <section className="py-20 px-4 md:px-8 lg:px-16 bg-gray-900/80 backdrop-blur-sm">
           <motion.div variants={itemVariants} className="max-w-7xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
               Why Choose NEXACODE?
@@ -58,7 +59,7 @@ const Home = () => {
         </section>
         
         {/* Demo Section */}
-        <section className="py-20 px-4 md:px-8 lg:px-16 bg-gray-800/50">
+        <section className="py-20 px-4 md:px-8 lg:px-16 bg-gray-800">
           <motion.div variants={itemVariants} className="max-w-7xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">
               Experience the Power

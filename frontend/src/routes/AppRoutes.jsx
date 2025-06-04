@@ -6,11 +6,12 @@ import Home from '../screens/Home'
 import Project from '../screens/Project'
 import UserAuth from '../auth/UserAuth'
 import ProjectsGrid from '../screens/ProjectsGrid'
+import Navbar from '../components/layout/NavBar'
 
 const AppRoutes = () => {
     return (
         <BrowserRouter>
-
+<Navbar/>
             <Routes>
                 <Route path="/" element={<Home/>} />
                 <Route path="/all" element={<UserAuth><ProjectsGrid /></UserAuth>} />

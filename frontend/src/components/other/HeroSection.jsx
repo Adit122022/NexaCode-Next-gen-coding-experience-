@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import CodeAnimation from './CodeAnimation';
+import Logo from '../layout/Logo';
 
 const HeroSection = () => {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ const HeroSection = () => {
     <section className="min-h-screen flex flex-col md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 gap-12">
       <div className="flex-1 space-y-6">
         <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600">
-          NEXACODE
+          <Logo size="Large" />
         </h1>
         <h2 className="text-xl md:text-2xl text-gray-300">
           Next Generation Code Editor
