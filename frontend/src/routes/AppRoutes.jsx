@@ -12,7 +12,8 @@ const AppRoutes = () => {
         <BrowserRouter>
 
             <Routes>
-                <Route path="/" element={<UserAuth><ProjectsGrid /></UserAuth>} />
+                <Route path="/" element={<Home/>} />
+                <Route path="/all" element={<UserAuth><ProjectsGrid /></UserAuth>} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/project" element={<UserAuth><Project /></UserAuth>} />

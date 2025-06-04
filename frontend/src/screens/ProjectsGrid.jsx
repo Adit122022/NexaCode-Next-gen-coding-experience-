@@ -20,7 +20,6 @@ const ProjectGrid = () => {
             .then((res) => {
                 console.log(res)
                 setIsModalOpen(false)
-                // Refresh projects after creation
                 fetchProjects()
             })
             .catch((error) => {
