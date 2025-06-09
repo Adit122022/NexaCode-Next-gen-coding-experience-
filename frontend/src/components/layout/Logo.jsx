@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+ import logoSvg from  '../../assets/nexa-code-logo.svg'
 
 const Logo = ({ size = 'medium' }) => {
   // Size variants
@@ -41,6 +42,7 @@ const Logo = ({ size = 'medium' }) => {
       variants={containerVariants}
       className={`flex items-center font-bold ${sizeVariants[size]}`}
     >
+      <img className='w-14 hover:scale-105 transition-all ease-linear duration-200' src={logoSvg} alt="" />
       {/* Animated letters */}
       {letters.map((letter, index) => (
         <motion.span
@@ -48,7 +50,7 @@ const Logo = ({ size = 'medium' }) => {
           variants={letterVariants}
           whileHover={{ y: -5 }}
           className={`
-            ${index < 4 ? 'text-blue-500' : 'text-purple-500'}
+            ${index < 4 ? 'text-blue-600' : 'text-purple-600'}
             transition-colors duration-300
           `}
         >
