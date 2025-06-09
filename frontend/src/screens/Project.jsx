@@ -183,7 +183,7 @@ const Project = () => {
     }
 
     return (
-        <main className='h-screen w-screen flex'>
+        <main className='h-screen w-screen pt-16 flex'>
             <section className="left relative flex flex-col h-screen min-w-96 bg-slate-800">
                 <header className='flex justify-between items-center p-2 px-4 w-full bg-slate-100 absolute z-10 top-0'>
                     <button className='flex gap-2' onClick={() => setIsModalOpen(true)}>
@@ -275,7 +275,7 @@ const Project = () => {
 
                 </div>
 
-
+{/* code editor */}
                 <div className="code-editor flex flex-col flex-grow h-full shrink">
 
                     <div className="top flex justify-between w-full">
